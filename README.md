@@ -1,4 +1,8 @@
 # grappa
+[![Build Status](https://travis-ci.org/stevecallear/grappa.svg?branch=master)](https://travis-ci.org/stevecallear/grappa)
+[![codecov](https://codecov.io/gh/stevecallear/grappa/branch/master/graph/badge.svg)](https://codecov.io/gh/stevecallear/grappa)
+[![Go Report Card](https://goreportcard.com/badge/github.com/stevecallear/grappa)](https://goreportcard.com/report/github.com/stevecallear/grappa)
+
 `grappa` offers a protoc plugin to generate and register method authorization rules directly from `.proto` definitions and a supporting JWT interceptor to validate the generated rules on method invocation.
 
 The module started as an experiment combining [`protoc-gen-star`](https://github.com/lyft/protoc-gen-star) for plugin creation, with [`jwt-go`](https://github.com/dgrijalva/jwt-go) for token validation to simplify the creation of JWT middleware for GRPC services written in Go.
@@ -92,7 +96,7 @@ auth := grappa.New(grappa.RSA(publicKey), func(o *grappa.Options) {
 Verifiers are executed in the order that they are present within the `ClaimsVerifiers` slice.
 
 ### Claims capture
-If the server needs to evaluate token claims, such as the subject then they can be extracted using `grappa.CaptureClaim`:
+If the server needs to evaluate token claims, such as the subject then they can be extracted using `grappa.CaptureClaim`.
 ```
 auth := grappa.New(grappa.RSA(publicKey), grappa.CaptureClaim("sub", "auth.sub"))
 ```
@@ -107,7 +111,7 @@ if md, ok := metadata.FromIncomingContext(ctx); ok {
 ```
 
 ### Wildcard rules
-It is possible to register rules for external services, these can include a trailing wildcard. For example, the following will grant anonymous access to all health check methods:
+It is possible to register rules for external services, these can include a trailing wildcard. For example, the following will grant anonymous access to all health check methods.
 ```
 auth := grappa.New(grappa.HMAC(key))
 example.RegisterExampleServiceServerRules(auth)
@@ -118,7 +122,7 @@ auth.Register("/grpc.health/v1.Health/*", &grappapb.Rule{
 ```
 
 ### Error handling
-By default the authorizor will return `codes.Unauthenticated` for all errors to avoid leaking internal information. It is possible to override this behaviour to implement logging or error customisation:
+By default the authorizor will return `codes.Unauthenticated` for all errors to avoid leaking internal information. It is possible to override this behaviour to implement logging or error customisation.
 ```
 auth := grappa.New(grappa.RSA(publicKey), func(o *grappa.Options) {
     o.ErrorFn = func(ctx grappa.Context, err error) error {
