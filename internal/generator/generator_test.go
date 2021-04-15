@@ -17,6 +17,7 @@ func TestNew(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	defer req.Close()
 
 	buf := new(bytes.Buffer)
 	pgs.Init(
