@@ -15,11 +15,4 @@ cover: proto
 .PHONY: install
 install: test
 	go install ./cmd/protoc-gen-grappa
-
-.PHONY: example
-example: test
-	protoc -I. --proto_path="./proto" --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. ./example/*.proto
-	protoc -I. --proto_path="./proto" --grappa_out=paths=source_relative:. ./example/*.proto
-
-	env GOOS=linux GOARCH=amd64 go build -o ./bin/example_linux ./example/cmd/example
-	env GOOS=windows GOARCH=amd64 go build -o ./bin/example_windows.exe ./example/cmd/example
+	
