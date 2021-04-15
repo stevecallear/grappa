@@ -1,0 +1,15 @@
+syntax = "proto3";
+package grappa;
+
+option go_package = "github.com/stevecallear/grappa/proto/grappapb";
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.MethodOptions {
+    Rule rule = 15542659;
+}
+
+message Rule {
+    bool allow_anonymous = 1;
+    repeated string require_scope = 2;
+}

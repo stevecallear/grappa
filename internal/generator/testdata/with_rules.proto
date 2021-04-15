@@ -1,0 +1,28 @@
+syntax = "proto3";
+package grappa.test;
+
+import "google/protobuf/empty.proto";
+import "grappapb/annotations.proto";
+
+option go_package = "github.com/stevecallear/grappa/internal/module/testdata";
+
+service AllowAnonService {
+    rpc Method(google.protobuf.Empty) returns (google.protobuf.Empty) {
+        option (grappa.rule) = {
+            allow_anonymous: True
+        };
+    }
+}
+
+service RequireScopeService {
+    rpc Method(google.protobuf.Empty) returns (google.protobuf.Empty) {
+        option (grappa.rule) = {
+            require_scope: "scope_a"
+            require_scope: "scope_b"
+        };
+    }
+}
+
+service NoRuleService {
+    rpc Method(google.protobuf.Empty) returns (google.protobuf.Empty);
+}

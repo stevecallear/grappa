@@ -1,0 +1,10 @@
+syntax = "proto3";
+package grappa.test;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/stevecallear/grappa/internal/module/testdata";
+
+service NoRuleService2 {
+    rpc Method(google.protobuf.Empty) returns (google.protobuf.Empty);
+}
