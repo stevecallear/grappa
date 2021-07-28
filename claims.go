@@ -4,7 +4,7 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/dgrijalva/jwt-go"
+	"github.com/golang-jwt/jwt"
 )
 
 // VerifyFunc represents a claims verification func

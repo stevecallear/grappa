@@ -1,5 +1,5 @@
 # grappa
-[![Build Status](https://travis-ci.org/stevecallear/grappa.svg?branch=master)](https://travis-ci.org/stevecallear/grappa)
+[![Build Status](https://github.com/stevecallear/grappa/actions/workflows/build.yml/badge.svg)](https://github.com/stevecallear/grappa/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/stevecallear/grappa/branch/master/graph/badge.svg)](https://codecov.io/gh/stevecallear/grappa)
 [![Go Report Card](https://goreportcard.com/badge/github.com/stevecallear/grappa)](https://goreportcard.com/report/github.com/stevecallear/grappa)
 
